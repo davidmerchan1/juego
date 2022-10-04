@@ -3,9 +3,12 @@
 function iniciarJuego(){
     let boton_mascota = document.getElementById('boton-selpokemon');
     boton_mascota.addEventListener('click', seleccionarMascota);
-    
 }
-
+//////////////////////////////////////////////////////////////////////////////
+function numeroAleatorio(min,max){
+    return Math.floor(Math.random() * (max-min+1)+min); 
+}
+//////////////////////////////////////////////////////////////////////////////
 function seleccionarMascota(){
 
     let agua = document.getElementById('m1');
@@ -17,25 +20,45 @@ function seleccionarMascota(){
     let mascota_jugador = document.getElementById('mascota-jugador');
    
    if(agua.checked){
-    alert('seleccionaste tu mascota de tipo agua'); 
     mascota_jugador.innerHTML = 'agua';
    }else if(fuego.checked){
-    return alert('seleccionaste tu mascota de tipo fuego'); 
+    mascota_jugador.innerHTML = 'fuego';
    }else if(tierra.checked){
-    return alert('seleccionaste tu mascota de tipo tierra'); 
+    mascota_jugador.innerHTML = 'tierra';
    }else if(fuego_agua.checked){
-    return alert('seleccionaste tu mascota de tipo fuego y agua'); 
+    mascota_jugador.innerHTML = 'fuego y agua';
    }else if(fuego_tierra.checked){
-    return alert('seleccionaste tu mascota de tipo fuego y tierra'); 
+     mascota_jugador.innerHTML = 'fuego y tierra';
    }else if(agua_tierra.checked){
-    return alert('seleccionaste tu mascota de tipo agua y tierra'); 
+     mascota_jugador.innerHTML = 'agua y tierra';
    }else{
-    return alert('No has seleccionado ninguna mascota'); 
-   }
-
-
-    
+     alert('No has seleccionado ninguna mascota'); 
+   }   
+   enemigoAleatorio();
 }
+//////////////////////////////////////////////////////////////////////////////
+function enemigoAleatorio(){
+    let numAleatorio = numeroAleatorio(1,6);
+    let mascota_enemigo = document.getElementById('mascota-enemigo');
+    if(numAleatorio == 1){
+        mascota_enemigo.innerHTML = 'agua';
+    }else if(numAleatorio == 2){
+        mascota_enemigo.innerHTML = 'fuego';
+    }else if(numAleatorio == 3){
+        mascota_enemigo.innerHTML = 'tierra';
+    }else if(numAleatorio == 4){
+        mascota_enemigo.innerHTML = 'agua y fuego';
+    }else if(numAleatorio == 5){
+        mascota_enemigo.innerHTML = 'fuego y tierra';
+    }else if(numAleatorio == 6){
+        mascota_enemigo.innerHTML = 'agua y tierra';
+    }else{
+        mascota_enemigo.innerHTML = 'Error'; 
+    }
+}
+
+
+
 
 let boton_atk_fuego;
 let boton_atk_tierra;
